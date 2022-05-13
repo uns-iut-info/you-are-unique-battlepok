@@ -1,0 +1,74 @@
+Exporter version: 2.93.5, Blender version: 2.93.3
+========= Conversion from Blender to Babylon.js =========
+	Scene settings used :
+		Inline textures     :  false
+		Material Type       :  PBR
+		Positions Precision :  4
+		Normals Precision   :  3
+		UVs Precision       :  3
+		Vert Color Precision:  3
+		Mat Weight Precision:  2
+		Keep Z-up r-handed  :  no
+		Texture directory   :  C:\Users\Matth\Documents\GitHub\BattlePoc\3dmodule\Picatchu\picalightatac\
+	Python World class constructor completed
+	WARNING: No active camera has been assigned, or is not in a currently enabled collection
+	processing begun of skeleton:  Armature, id:  0
+		processing begun of bone:  Bone, index:  0
+		processing begun of bone:  Bone.001, index:  1
+		processing action lightatac:  in[1 - 29], out[0 - 29]
+		processing action lightatac.001:  in[1 - 28], out[40 - 68]
+	processing begun of mesh:  aroundlight
+		processing begun of material:  electiric
+		num positions      :  2877
+		num normals        :  2877
+		num tangents       :  0
+		num uvs            :  5754
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  960
+		Skeleton stats:  
+			Total Influencers:  2877
+			Avg # of influencers per vertex:  1
+			Highest # of influencers observed:  1, num vertices with this:  2877
+			exported as 1 influencers
+			num skeletonWeights and skeletonIndices:  11508
+	processing begun of mesh:  iclight
+		processing begun of material:  electiric
+		registered as also a user of material:  electiric
+		num positions      :  679
+		num normals        :  679
+		num tangents       :  0
+		num uvs            :  1358
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  236
+		Skeleton stats:  
+			Total Influencers:  684
+			Avg # of influencers per vertex:  1.0074
+			Highest # of influencers observed:  2, num vertices with this:  5
+			exported as 2 influencers
+			num skeletonWeights and skeletonIndices:  2716
+		WARNING: # of 0 area faces found:  20
+	processing begun of mesh:  iclightd
+		processing begun of material:  electiric.001
+		num positions      :  677
+		num normals        :  677
+		num tangents       :  0
+		num uvs            :  1354
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  236
+		Skeleton stats:  
+			Total Influencers:  677
+			Avg # of influencers per vertex:  1
+			Highest # of influencers observed:  1, num vertices with this:  677
+			exported as 1 influencers
+			num skeletonWeights and skeletonIndices:  2708
+		WARNING: # of 0 area faces found:  20
+========= Writing of JSON file started =========
+	writing mesh:  aroundlight
+	writing mesh:  iclight
+	writing mesh:  iclightd
+========= Writing of JSON file completed =========
+========= end of processing =========
+elapsed time:  0 min, 0.7054 secs

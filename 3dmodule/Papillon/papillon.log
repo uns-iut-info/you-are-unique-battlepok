@@ -1,0 +1,44 @@
+Exporter version: 2.93.5, Blender version: 2.93.3
+========= Conversion from Blender to Babylon.js =========
+	Scene settings used :
+		Inline textures     :  false
+		Material Type       :  PBR
+		Positions Precision :  4
+		Normals Precision   :  3
+		UVs Precision       :  3
+		Vert Color Precision:  3
+		Mat Weight Precision:  2
+		Keep Z-up r-handed  :  no
+		Texture directory   :  C:\Users\Matth\Documents\GitHub\BattlePoc\3dmodule\Papillon\
+	Python World class constructor completed
+	processing begun of skeleton:  Armature, id:  0
+		processing begun of bone:  Bone, index:  0
+		processing begun of bone:  Bone.001, index:  1
+		processing begun of bone:  Bone.002, index:  2
+		processing begun of bone:  Bone.003, index:  3
+		processing begun of bone:  Bone.004, index:  4
+		processing begun of bone:  Bone.005, index:  5
+	processing begun of camera (UniversalCamera):  Camera
+	processing begun of mesh:  papillon
+		processing begun of material:  matpapillon
+			processing texture papillon
+				texture type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  15110
+		num normals        :  15110
+		num tangents       :  0
+		num uvs            :  30220
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  5302
+		Skeleton stats:  
+			Total Influencers:  38353
+			Avg # of influencers per vertex:  2.5383
+			Highest # of influencers observed:  6, num vertices with this:  24
+			exported as 6 influencers
+			num skeletonWeights and skeletonIndices:  120880
+	processing begun of light (POINT):  Light
+========= Writing of JSON file started =========
+	writing mesh:  papillon
+========= Writing of JSON file completed =========
+========= end of processing =========
+elapsed time:  0 min, 1.8796 secs

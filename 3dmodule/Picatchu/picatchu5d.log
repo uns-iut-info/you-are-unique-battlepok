@@ -1,0 +1,187 @@
+Exporter version: 2.93.5, Blender version: 2.93.3
+========= Conversion from Blender to Babylon.js =========
+	Scene settings used :
+		Inline textures     :  false
+		Material Type       :  PBR
+		Positions Precision :  4
+		Normals Precision   :  3
+		UVs Precision       :  3
+		Vert Color Precision:  3
+		Mat Weight Precision:  2
+		Keep Z-up r-handed  :  no
+		Texture directory   :  C:\Users\Matth\Documents\GitHub\BattlePoc\3dmodule\Picatchu\
+	Python World class constructor completed
+	WARNING: No active camera has been assigned, or is not in a currently enabled collection
+	processing begun of skeleton:  Armature, id:  0
+		processing begun of bone:  corp, index:  0
+		processing begun of bone:  corp2, index:  1
+		processing begun of bone:  jambd, index:  2
+		processing begun of bone:  jambd2, index:  3
+		processing begun of bone:  jambd3, index:  4
+		processing begun of bone:  jambg, index:  5
+		processing begun of bone:  jambg2, index:  6
+		processing begun of bone:  jambg3, index:  7
+		processing begun of bone:  queue, index:  8
+		processing begun of bone:  maing, index:  9
+		processing begun of bone:  maing2, index:  10
+		processing begun of bone:  maind, index:  11
+		processing begun of bone:  maind2, index:  12
+		processing begun of bone:  corp.003, index:  13
+		processing begun of bone:  tete, index:  14
+		processing begun of bone:  oreilleg, index:  15
+		processing begun of bone:  oreilled, index:  16
+		processing action 1stande:  in[1 - 32], out[0 - 32]
+		processing action 2staydown:  in[1 - 32], out[40 - 72]
+		processing action 3down:  in[1 - 16], out[80 - 96]
+		processing action 4up:  in[1 - 15], out[110 - 125]
+		processing action 5walk:  in[1 - 32], out[130 - 162]
+		processing action 6run:  in[1 - 16], out[170 - 186]
+		processing action 7jump:  in[1 - 32], out[200 - 232]
+		processing action 8attaque1:  in[1 - 28], out[240 - 268]
+		processing action 8attaque2:  in[1 - 29], out[280 - 309]
+		processing action 9die:  in[1 - 32], out[320 - 352]
+	processing begun of mesh:  Corp
+		animation processing begun
+			processing action 4up:  in[1 - 15], out[0 - 15]
+		processing begun of material:  picatchujellow
+			processing texture pikatchuf
+				texture type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  3739
+		num normals        :  3739
+		num tangents       :  0
+		num uvs            :  7478
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  5262
+		Skeleton stats:  
+			Total Influencers:  12408
+			Avg # of influencers per vertex:  3.3185
+			Highest # of influencers observed:  6, num vertices with this:  10
+			exported as 6 influencers
+			num skeletonWeights and skeletonIndices:  29912
+	processing begun of mesh:  Tete
+		animation processing begun
+			processing action 3down:  in[1 - 16], out[0 - 16]
+		processing begun of material:  picatchujellow
+		registered as also a user of material:  picatchujellow
+		num positions      :  5402
+		num normals        :  5402
+		num tangents       :  0
+		num uvs            :  10804
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  8190
+		Skeleton stats:  
+			Total Influencers:  11203
+			Avg # of influencers per vertex:  2.0739
+			Highest # of influencers observed:  4, num vertices with this:  2
+			exported as 4 influencers
+			num skeletonWeights and skeletonIndices:  21608
+	processing begun of mesh:  Oreilleg
+		processing begun of material:  picatchujellow
+		registered as also a user of material:  picatchujellow
+		num positions      :  3221
+		num normals        :  3221
+		num tangents       :  0
+		num uvs            :  6442
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  4860
+		Skeleton stats:  
+			Total Influencers:  3221
+			Avg # of influencers per vertex:  1
+			Highest # of influencers observed:  1, num vertices with this:  3221
+			exported as 1 influencers
+			num skeletonWeights and skeletonIndices:  12884
+	processing begun of mesh:  Oreilled
+		processing begun of material:  picatchujellow
+		registered as also a user of material:  picatchujellow
+		num positions      :  2912
+		num normals        :  2912
+		num tangents       :  0
+		num uvs            :  5824
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  4860
+		Skeleton stats:  
+			Total Influencers:  2912
+			Avg # of influencers per vertex:  1
+			Highest # of influencers observed:  1, num vertices with this:  2912
+			exported as 1 influencers
+			num skeletonWeights and skeletonIndices:  11648
+	processing begun of mesh:  Piedg
+		processing begun of material:  picatchujellow
+		registered as also a user of material:  picatchujellow
+		num positions      :  3432
+		num normals        :  3432
+		num tangents       :  0
+		num uvs            :  6864
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  4860
+		Skeleton stats:  
+			Total Influencers:  6951
+			Avg # of influencers per vertex:  2.0253
+			Highest # of influencers observed:  3, num vertices with this:  462
+			exported as 3 influencers
+			num skeletonWeights and skeletonIndices:  13728
+	processing begun of mesh:  Piedd
+		processing begun of material:  picatchujellow
+		registered as also a user of material:  picatchujellow
+		num positions      :  3333
+		num normals        :  3333
+		num tangents       :  0
+		num uvs            :  6666
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  4860
+		Skeleton stats:  
+			Total Influencers:  6462
+			Avg # of influencers per vertex:  1.9388
+			Highest # of influencers observed:  3, num vertices with this:  308
+			exported as 3 influencers
+			num skeletonWeights and skeletonIndices:  13332
+	processing begun of mesh:  Main
+		processing begun of material:  picatchujellow
+		registered as also a user of material:  picatchujellow
+		num positions      :  6459
+		num normals        :  6459
+		num tangents       :  0
+		num uvs            :  12918
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  9720
+		Skeleton stats:  
+			Total Influencers:  9164
+			Avg # of influencers per vertex:  1.4188
+			Highest # of influencers observed:  2, num vertices with this:  2705
+			exported as 2 influencers
+			num skeletonWeights and skeletonIndices:  25836
+	processing begun of mesh:  Queue
+		processing begun of material:  picatchujellow
+		registered as also a user of material:  picatchujellow
+		num positions      :  36967
+		num normals        :  36967
+		num tangents       :  0
+		num uvs            :  73934
+		num uvs2           :  0
+		num colors         :  147868
+		num triangles      :  73202
+		Skeleton stats:  
+			Total Influencers:  36967
+			Avg # of influencers per vertex:  1
+			Highest # of influencers observed:  1, num vertices with this:  36967
+			exported as 1 influencers
+			num skeletonWeights and skeletonIndices:  147868
+========= Writing of JSON file started =========
+	writing mesh:  Corp
+	writing mesh:  Tete
+	writing mesh:  Oreilleg
+	writing mesh:  Oreilled
+	writing mesh:  Piedg
+	writing mesh:  Piedd
+	writing mesh:  Main
+	writing mesh:  Queue
+========= Writing of JSON file completed =========
+========= end of processing =========
+elapsed time:  1 min, 16.4925 secs
