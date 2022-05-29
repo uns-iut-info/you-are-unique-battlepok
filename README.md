@@ -11,142 +11,143 @@ Matthis Kuhl, Ahmed El Hanafi Si Dehbi
 
 Concept de jeu:
 
-Le jeu s'inspire du monde pokemon, il est mode un joueuer et vous étez pikatchu.
-Vous devez vous battre contre les autres pokemons et sur tous contre le redutable pokemon boss Mewtwo.
-La map est générer aléatoirement avec un algorithme reliant les salles positioner au hasard avec des chemins.
-Il y a plusieurs enemie qu'on peut retrouver dans les salles.
-Les salles ce recharge à chaque fois que vous y entrer de dans.
-Vous gagnez des experiance et donc des niveaux pour chaque victoir sur un pokemon.
-De plus la difficulté des salles augemante avec le gain de niveau.
+Le jeu s'inspire du monde pokemon, il est mode un joueur et vous êtes pikatchu.
+Vous devez vous battre contre les autres pokemons et surtout contre le redoutable pokemon boss Mewtwo.
+La map est générée aléatoirement avec un algorithme reliant les salles positionnées au hasard avec des chemins.
+Il y a plusieurs ennemis qu'on peut retrouver dans les salles.
+Les salles se rechargent à chaque fois que vous y entrez dedans.
+Vous gagnez des expériences et donc des niveaux pour chaque victoire sur un pokemon.
+De plus la difficulté des salles augmente avec le gain de niveau.
 
 L'histoire:
 
-Nous jouant dans un monde ou Miewtwoo à décidé de faire disparaitre tous les humain sur terre et de les éffacés de la mémoires des pokemons. Picatchu est le dernier à avoir des souvenirs et ce met à la concete pour le retour des Humains.
-Bien que les autres pokemons et leurs environement vont rendre cette conquete difficile arrivera-t-il à c'est fin?
+Nous jouons dans un monde où Mewtwo a décidé de faire disparaître tous les humains sur terre et de les effacer de la mémoire des pokemons. Pikatchu est le dernier à avoir des souvenirs et se met à la conquête pour le retour des humains.
+Les autres pokemons et leur environement vont rendre cette conquête difficile arrivera-t-il à ses fins ?
 C'est à vous de sauver ce monde.
 
-Réggle de jeut:
-Il ne faut pas résté dans l'eau si non on perdra vite connaisance.
-Le but est de battre les autres pokemons affin de gagner en experiance puis battre le boss mewtwo qui ce trouve à l'autre coté de la map.
+Règles du jeu:
+Il ne faut pas rester dans l'eau sinon on perdra vite connaissance.
+Le but est de battre les autres pokemons afin de gagner en expérience puis battre le boss mewtwo qui se trouve de l'autre côté de la map.
 
 
-Lien video d'un montage de game play du jeut :
+Lien video d'un montage de game play du jeu :
 https://youtu.be/gvQq46K9cbI
 
-lien d'ébergement du jeu:
+Lien d'hébergement du jeu:
 https://kuhlmatthis.github.io/BattlePoK/
 
 
 Menu:
 
-Le menu est une interface babylonjs scene rendered au debut on peut appuiez sur:
+Le menu est une interface babylonjs scene rendered au début on peut appuier sur:
 
-Play pour demare la vidéo est puis jouer par la suite
-Replay pour lancé une partie sans vidéo 
-Informations pour obtenir les information de jeu nécéssaire.
+Play pour démarrer la vidéo et puis jouer par la suite
+Replay pour lancer une partie sans vidéo 
+Informations pour obtenir les informations de jeu nécéssaires.
 Quit: pour sortir du jeu.
 
-Si on jeut est lancé à la touche p on reviens sur la scene du menu et avec play on continue le jeu, replay on lance un nouveau jeu.
+Si le jeu est lancé avec la touche p on revient sur la scène du menu et avec play on continue le jeu, replay on lance un nouveau jeu.
 
 Creation de la map:
 
-On a définis en careau 50 50 qui est la map de notre jeu.
-Chaque salle est un rectange fix à une position x et y de longeure 20.
-Pour positioner:
+On a défini un carreau 50 50 qui est la map de notre jeu.
+Chaque salle est un rectange fixé à une position x et y de longueur 20.
+Pour positionner:
 tant que existe salle à placer:
-On prend un point au hasard dans la map et on verrifie qu'il ne ce croise pas avec une salle déjà existant.
-en fonction du résultat présenedant en rajoute la salle et en diminue les salles à creer ou si non en continue à boucler.
+On prend un point au hasard dans la map et on vérifie qu'il ne se croise pas avec une salle déjà existante.
+En fonction du résultat précédant on rajoute la salle et on diminue les salles à créer ou sinon on continue à boucler.
 
-Pour creer les chemin on connecte salle 0 à salle 1 puis salle 1 à salle 2 etc
-Pour chaque salle en à definis le point de départ et d'arriver juste devant la porte par la suite on peut calculer le mouvement nécéssaire pour le chemin: position x de la salle 1 - position x de la salle 2 et position y de la salle 2 - position y de la salle 2
-On va boucler sur c'est valeur et à chaque fois creer les box à la position actuelle puis reduer les valeur.
+Pour créer les chemins on connecte salle 0 à salle 1 puis salle 1 à salle 2 etc.
+Pour chaque salle on a defini le point de départ et d'arriver juste devant la porte par la suite on peut calculer le mouvement nécessaire pour le chemin: position x de la salle 1 - position x de la salle 2 et position y de la salle 2 - position y de la salle 2
+On va boucler sur ces valeurs et à chaque fois créer les box à la position actuelle puis réduire les valeurs.
 Si les valeurs sont à 0 0 on est arrivé chez l'autre salle.
 
-Difficulté: en peut passez à travers des salles entre le point de départ et d'arriver.
-La solution n'est pas si compliqué grace à la forme d'une salle rectangulaire. Si jamais en croise une salle:
-on allange sur les mures droites ou gauche j'usqu'au bout puis en avance de un.
-Il faut pas oublié d'incrémenter les valeurs en fonction affin de prendre en compte qu'on reprend de la distance et revenir dans l'autre sense plus tard.
+Difficulté: on peut passer à travers des salles entre le point de départ et d'arrivée.
+La solution n'est pas si compliquée grâce à la forme d'une salle rectangulaire. Si jamais on croise une salle:
+on allonge sur les murs à droite ou à gauche jusqu'au bout puis on avance de un.
+Il ne faut pas oublier d'incrémenter les valeurs en fonction afin de prendre en compte qu'on reprend de la distance et revenir dans l'autre sens plus tard.
 
-Generer aléatoirement de la map étais compliqué sur tous qu'on travaillé avec plusieurs boucle while non trivial pour positionnement les salles et creer les chemins.
-Donc fallais comprendre pourquoi ca bouclé souvant à l'invinis et donc plante la page web.
+Générer aléatoirement de la map était compliqué surtout qu'on travaillait avec plusieurs boucles while non trivial pour positionner les salles et créer les chemins.
+Donc il fallait comprendre pourquoi ça bouclait souvent à l'infini et donc plantait la page web.
 
-Exterieure:
+Extérieur:
 ![Screenshot](readmeimage/exterieure.png)
 
-Pour rendre l'exterieure plus intérrésant on a positioner des enemie au assard sur la map. Un pokemon d'eaux et un volant.
-Il fallais vérifié que la création ne ce fessait pas sur le chemin en lui même risque que c'est enemi sont stocker dans les mures ou que les pokemon d'eau se trouve sur la surface.
-Pour des résultats propre on as découpé la map dans des zones ou en générais un ennemi soit volant soit nagant.
-Dans cette zone en choisis une position au hasard et on verifie grace à un ray cast qu'il n'y a pas de colision avec un chemin.
+Pour rendre l'extérieur plus intérressant on a positionné des ennemis au hasard sur la map. Un pokemon d'eau et un volant.
+Il fallait vérifier que la création ne se faisait pas sur le chemin en lui-même au risque que les ennemis restent bloqués dans les murs ou que les pokemons d'eau se trouvent sur la surface.
+Pour des résultats propres on a découpé la map dans des zones ou on générait un ennemi soit volant soit nageant.
+Dans cette zone on choisit une position au hasard et on vérifie grâce à un ray cast qu'il n'y a pas de colision avec un chemin.
 
-Deux problemes sont que dans les salles le sol n'est pas encore généré donc l'enemie peut se retrouver de dans et que juste le sol classique et verifier non le sole sous forme lave.
+Deux problèmes sont que dans les salles le sol n'est pas encore généré donc l'ennemi peut se retrouver dedans et que juste le sol classique soit verifié et non le sol sous forme lave.
 
-Il y a des particules fummés devant l'entree qui disparaise et reapparaise lors de l'entrée sortis de la salle.
-Plus concrétement j'ai une box de la taile de salle avec alpha = 0 donc invisible.
-Cette box a un actionmanager qui trigger lors de l'entrée ou sortis de cette box et donc va executer plusieur chose:
-1: desactive ou active le systeme de particule devant l'entrée.
-2: desactive ou active le systeme de particule de la plui sur picatchu
-3: disable tous les enemies éxtérieure
-4: genere le sol et ellement d'environnement et ennemie de la salle (suite)
+Il y a des particules fumés devant l'entrée qui disparaissent et réapparaissent lors de l'entrée sortie de la salle.
+Plus concrètement j'ai une box de la taille de salle avec alpha = 0 donc invisible.
+Cette box a un actionmanager qui trigger lors de l'entrée ou sortie de cette box et donc va éxecuter plusieurs choses:
+1: désactive ou active le système de particules devant l'entrée.
+2: désactive ou active le système de particules de la pluie sur pikatchu
+3: disable tous les ennemies extérieurs
+4: génère le sol et les éléments de l'environnement et ennemis de la salle (suite)
 
 
 Salle et Ennemi:
 ![Screenshot](readmeimage/fullsale.png)
 
-La salle en elle meme est générer que à l'entreer de picatchu ce qui augemente les preformances.
-Il existe trois types de salles:
-Salles normale avec le double d'ennemie.
+La salle en elle-même est générée qu'à l'entrée de pikatchu ce qui augmente les performances.
+Il existe trois types de salle:
+Salles normales avec le double d'ennemis.
 Salles avec de la lave sur le sol.
-Salles avec des statues dragons crachant du feut sur une longeur.
+Salles avec des statues dragons crachant du feu sur une longueur.
 
-Pour detecter la colision de picatchu avec le sol de lave à chaque frame on lance un rayon du centre de picatchu vers le sol.
-Le rayon est d'une distance à juste toucher un peut le sol comme ca si on sotte par dessus pas de probleme.
+Pour détecter la colision de pikatchu avec le sol de lave à chaque frame on lance un rayon du centre de pikatchu vers le sol.
+Le rayon est d'une distance à juste toucher un peu le sol comme ça si on saute par dessus pas de problèmes.
 Si le rayon touche un objet "lave" il prend des dégats.
-L'avantage est que nous controlons la colision du coté mobil (picatchu) et non du coté du sole lave ce qui reduit fortement le nombre de vérification de colision.
-Pour le feut cracher par le dragon c'est un systme de particule pour chaque careuax et une box invisible generer à chaque attaque.
-Cette box est prise en compte aussi par le raycast de picatchu pour prendre des dégats.
+L'avantage est que nous contrôlons la colision du côté mobile (pikatchu) et non du côté du sol lave ce qui réduit fortement le nombre de vérification de colision.
+Pour le feu craché par le dragon c'est un système de particules pour chaque carreau et une box invisible générée à chaque attaque.
+Cette box est prise en compte aussi par le raycast de pikatchu pour prendre des dégâts.
 
-Pour la génération des enemies une salle calcule une valeur par rapport au niveau de picatchu cette valeur est des ennemi de la salle. 
-Concretement en boucle tant que valeur n'est pas égale à 0 et on génere un ennemi au hasard et à un endroit hasard dans la salle.
-Chaque enemi enleve un nombre précis à cette valeur qui peut varier en fonction de ca puissance.
+Pour la génération des ennemis une salle calcule une valeur par rapport au niveau de pikatchu cette valeur est des ennemis de la salle. 
+Concrètement on boucle tant que la valeur n'est pas égale à 0 et on génère un ennemi au hasard et à un endroit au hasard dans la salle.
+Chaque ennemi enlève un nombre précis à cette valeur qui peut varier en fonction de sa puissance.
 
-Il y a dans les salles 4 types d'ennemi:
-Le marowak(nb: 1) attack proche l'ennemi de base
-Le pappillon(nb: 2) identité volant qui lance des balles sur le picatchu (les balles on un actionmanager on intersect avec box de picatchu).
-La bombe(nb: 3) lorsque cette identité est trop proche elle explose et vous donnes un packet dégats
-Le cheval (nb: 4) elle courts sur vous mais remais sont mouvement et vision que certaine fois à jours emets de dégats lors de la colision avec lui.
+Il y a dans les salles 4 types d'ennemis:
+Le marowak(nb: 1) attaque proche de l'ennemi de base
+Le papillon(nb: 2) identité volante qui lance des balles sur le pikatchu (les balles ont un actionmanager on intersect avec box de pikatchu).
+La bombe(nb: 3) lorsque cette identité est trop proche elle explose et vous donne un packet dégâts
+Le cheval (nb: 4) il court sur vous mais remet son mouvement et vision rarement. Emet des dégâts lors de la colision avec lui.
 
-A l'éxtérieure il existe un pokemon d'eau qui ressemble au papillon par contre ce lui si bouge completement aléatoirement sur le terrain.
+A l'éxterieur il existe un pokemon d'eau qui ressemble au papillon par contre celui-ci bouge complètement aléatoirement sur le terrain.
 
 
 
-Lumiere:
+Lumière:
 ![Screenshot](readmeimage/fireandlight.png)
-Il existe plusieur type de lumiere dans le jeut le sollei la lumiere jaune.
-Une lumiere de point suivant picatchu amene effet de profendeur.
-Et les lumiere dans les salles qui sont un mesh avec animation et fais avec blender et un point lumiere soit vert,bleu ou rouge.
-De plus il y a un GlowLayer appliqué sur les meshes (fais briller).
+Il existe plusieurs types de lumières dans le jeu :
+Le soleil la lumière ambiante.
+Une lumière de point suivant pikatchu amène effet de profondeur.
+Et les lumieres dans les salles qui sont un mesh avec animation et faites avec blender et un point lumière soit vert, bleu ou rouge.
+De plus il y a un GlowLayer appliqué sur les meshes (fait briller).
 
-Picatchu:
-Pour la vision du jeut on utilise une FollowCamera celle si suit non pas picatchu mais une boit invisible paranthé à picatchu qui est on peut plus loin et plus en hauteur que picatchu.
-Picatchu à des annimation il peut marché, courir, attaque, sauter, perdre.
-Il a aussi des bares (rectangle couleur différant) de vie, experiance et d'energie pour les modifier j'utilise leur scaling et je les déplace un peut (1/2 vers la gauche).
+Pikatchu:
+Pour la vision du jeu on utilise une FollowCamera celle-ci suit non pas pikatchu mais une boite invisible paranté à pikatchu qui est un peu plus loin et plus en hauteur que pikatchu.
+Pikatchu à des animations il peut marcher, courir, attaquer, sauter, perdre.
+Il a aussi des barres (rectangle couleur différent) de vie, expérience et d'énergie pour les modifier j'utilise leur scaling et je les déplace un peu (1/2 vers la gauche).
 De plus c'est bares sont parenthé à picatchu.
-(Pour les ennemi c'est pareille).
-Pour l'attque d'eclaire j'ai un objet qui a une animation d'extension fais sous blender qui appariat à chaque attaque.
-Les attaques sont variers coute pas d'énérgie, font plus de dégats, sont instantané (ray casting) ou une boule ce propagant etc.
-Pour la plui elle est attaché à picatchue emmet dans un rectangle autour de picatchu.
-Le saut ne sont que autorisé depuis une certaine hauteur celui du sol.
-Il y a beaucoup de timing pour incrementer la vie et l'energie et gerer les attacs.
+(Pour les ennemis c'est pareil).
+Pour l'attaque d'éclairs j'ai un objet qui a une animation d'extension faite sous blender qui apparait à chaque attaque.
+Les attaques sont variées, ne coûtent pas d'énergie, font plus de dégâts, sont instantanées (ray casting) ou une boule se propageant etc.
+Pour la pluie, elle est attachée à pikatchu, émet dans un rectangle autour de pikatchu.
+Les sauts ne sont que autorisés depuis une certaine hauteur celui du sol.
+Il y a beaucoup de timing pour incrémenter la vie et l'énergie et gérer les attaquer.
 
 Mesh et video:
 ![Screenshot](readmeimage/blender.png)
 
-Pour les meshes une partie et récuperer sur internet cgtrader.com/ puis souvent repain puis skeletisé et animé en blender par nous meme.*
+Pour les meshes une partie est récuperer sur internet cgtrader.com/ puis souvent repain puis skeletisé et animé en blender par nous-même.*
 Puis transformer en fichier babylon.
-Puis par la suite pour faire la vidéo j'ai importer tous les pokemon dans un dokument plainder j'ai creer l'ariere fon avec deux planes puis les animation par la suite j'ai render chaque scene.
-Pour assemblé j'ai reimporter chaque render rajouter l'écriture et la music puis re render la video complette.
-La derniere étape consisté à transformais la vidéo sous forme mp4 l'importer comme VideoTexture dans une plan de taille de l'ecran puis il fallais juste fixé la camera a la bonne position.
-Lors du switch du menu à la vidéo on render la scene de la video à la fin on dispose la video et on render la scene du jeu.
+Puis par la suite pour faire la vidéo j'ai importé tous les pokemon dans un document plainder j'ai créé l'arrière fond avec deux planes puis les animations par la suite j'ai render chaque scène.
+Pour assembler j'ai réimporter chaque render rajouter l'écriture et la musique puis ré-render la vidéo complète.
+La derniere étape consistait à transformer la vidéo sous forme mp4 l'importer comme VideoTexture dans un plan de taille de l'écran puis il fallait juste fixer la caméra à la bonne position.
+Lors du switch du menu à la vidéo on render la scène de la video à la fin on dispose la vidéo et on render la scène du jeu.
 
 
 Boss:
@@ -154,27 +155,27 @@ Boss:
 
 ![Screenshot](readmeimage/Boss.png)
 
-Pour aller au bosse faut monter l'arene entierement mon fais sous blender est exporté.
-Probleme qu'on a eu des interface non parfaitement droite au sol pour un effet visuelle en creer des collision dérangant.
-Le boss est un ennemi classique avec plus de vie et plus de comportement speciale:
-Il a trois comportement:
+Pour aller au boss il faut monter l'arène entièrement faite sous blender est exporté.
+Problème qu'on a eu des interfaces non parfaitement droites au sol pour un effet visuel on créé des collisions dérangeantes.
+Le boss est un ennemi classique avec plus de vie et plus de comportements speciaux:
+Il a trois comportements:
 
-1: Ce teleporte au hasard sur un rayon pour faire cella on calcule une val x sur le diametre puis on utilise pitagore pour trouver ca positon y sachant que le rayon est donc le coté le plus long est statique.
-A chaque deuxieme téléportation balance une balle vers picatchu
+1: Se téléporte au hasard sur un rayon pour faire cela on calcule une val x sur le diamètre puis on utilise pytagore pour trouver sa positon y sachant que le rayon et donc le côté le plus long est statique.
+A chaque deuxième téléportation balance une balle vers pikatchu.
 
 2:
-Ce mets or porté de picatchu est fais tombé des balles du cielle d'eau dessus de picatchu.
-(Faut rester on mouvement pour les évité)
+Se met hors portée de pikatchu et fait tombé des balles du ciel d'au-dessus de pikatchu.
+(Il faut rester en mouvement pour les éviter)
 
 3:
-Ce teleport sur un rayon plus large et on hauteur puis vole en ligne droit sur picatchu en le touchant emets des dégats plusieurs fois.
+Se téléporte sur un rayon plus large et en hauteur puis vole en ligne droite sur pikatchu en le touchant émet des dégâts plusieurs fois.
 
-Mewtwo n'est que attacable lors de la stategie 1 et il altaire entre strategie 1 puis strategie 2 ou 3 puis restrategie 1 ...
+Mewtwo n'est que attaquable lors de la stratégie 1 et il altèrne entre stratégie 1 puis stratégie 2 ou 3 puis re stratégie 1 ...
 
 
-Soucis et possible amélioration:
+Soucis et possibles améliorations:
 
-Les enemies à l'exterieur peuve aparaitre dans les salles et peuve bisarement resté inactif qu'elle que fois.
-Donc faut verifier la manipulation des liste des ennemis active et bloqué le spon d'ennemi vers les salles.
-La vision de la camera peut etre caché par les rectangle et d'autre element du jeut.
-Une solution cerrais de creer on grand cube deriere la camera qui a un actionmanager et reduit l'alpha à l'entree dans ce cube et le reaugemente à la sortis des objets.
+Les ennemis à l'extérieur peuvent apparaître dans les salles et peuvent bizarrement restés inactifs quelque fois.
+Donc il faut vérifier la manipulation des listes des ennemis actifs et bloqués le spon d'ennemis vers les salles.
+La vision de la caméra peut être cachée par les rectangles et d'autres éléments du jeu.
+Une solution serait de créer un grand cube derrière la caméra qui a un actionmanager et réduit l'alpha à l'entrée dans ce cube et le réaugmente à la sortie des objets.
