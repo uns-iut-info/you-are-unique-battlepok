@@ -1,0 +1,52 @@
+Exporter version: 2.93.5, Blender version: 2.93.3
+========= Conversion from Blender to Babylon.js =========
+	Scene settings used :
+		Inline textures     :  false
+		Material Type       :  PBR
+		Positions Precision :  4
+		Normals Precision   :  3
+		UVs Precision       :  3
+		Vert Color Precision:  3
+		Mat Weight Precision:  2
+		Keep Z-up r-handed  :  no
+		Texture directory   :  C:\Users\Matth\Documents\GitHub\BattlePoc\3dmodule\Mewtwo\
+	Python World class constructor completed
+	WARNING: No active camera has been assigned, or is not in a currently enabled collection
+	processing begun of skeleton:  Armature, id:  0
+		processing begun of bone:  Bone, index:  0
+		processing begun of bone:  Bone.001, index:  1
+		processing begun of bone:  Bone.002, index:  2
+		processing begun of bone:  Bone.007, index:  3
+		processing begun of bone:  Bone.003, index:  4
+		processing begun of bone:  Bone.008, index:  5
+		processing begun of bone:  Bone.004, index:  6
+		processing begun of bone:  Bone.009, index:  7
+		processing begun of bone:  Bone.005, index:  8
+		processing begun of bone:  piedL, index:  9
+		processing begun of bone:  Bone.006, index:  10
+	processing begun of mesh:  Group9425
+		processing begun of material:  Material
+			processing texture mewtwo_15k_by_dommk_mewtwo_15k_by_dommk_BaseColor
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture mewtwo_15k_by_dommk_mewtwo_15k_by_dommk_Emissive
+				texture type:  emissiveTexture, mapped using: "UVMap"
+		Custom split normals with tangents being used
+		num positions      :  21492
+		num normals        :  21492
+		num tangents       :  85968
+		num uvs            :  42984
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  25914
+		Skeleton stats:  
+			Total Influencers:  35182
+			Avg # of influencers per vertex:  1.637
+			Highest # of influencers observed:  4, num vertices with this:  1069
+			exported as 4 influencers
+			num skeletonWeights and skeletonIndices:  85968
+	processing begun of light (POINT):  Light
+========= Writing of JSON file started =========
+	writing mesh:  Group9425
+========= Writing of JSON file completed =========
+========= end of processing =========
+elapsed time:  0 min, 8.6819 secs

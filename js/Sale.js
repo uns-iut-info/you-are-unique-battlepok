@@ -1,6 +1,8 @@
 //import * as BABYLON from "@babylonjs/core";
 import Enemi from "./Enemi.js";
 import EnemiStatue from "./EnemiStatue.js";
+import Createur from "./Createur.js";
+
 
 export default class Sale {
     constructor(x,z,y,length,width,height,taille,scene) {
@@ -40,6 +42,7 @@ export default class Sale {
     }
 
     create(vlight,scene) {
+        this.createur = new Createur(scene);
         this.portesmoke = scene.bluesmoke.clone("system2");
         this.portesmoke.particleTexture = new BABYLON.Texture("img/Smoke_SpriteSheet_8x8.png");
         if(this.porte[0]-this.porte[2]!= 0){
@@ -250,26 +253,48 @@ export default class Sale {
         this.salleenv.forEach(element => {
             element.setEnabled(true);
         });
-        let marowakmesh = this.doClone(marowakobj.meshes[0],  marowakobj.skeletons,1)
-        marowakmesh.setEnabled(true);
-        marowakmesh.addLODLevel(200, null);
-        marowakmesh.position = new BABYLON.Vector3(this.ox+100, 8, this.oz+100)
-        
         if(this.roomtype==2){
             this.createDragonRoom(scene)
         }
-        
-       
-        
-        let marowak = new Enemi(marowakmesh,marowakmesh.skeleton,1,7,scene);
-        scene.enemies.push(marowakmesh);
-        this.enemies.push(marowakmesh);    
+        this.createEnemies(marowakobj,scene);
+    }
+
+
+    createEnemies(marowakobj,scene){
+        let nbval;
+        if(this.roomtype==0){
+            nbval = scene.pica.level*2;
+        }else if(this.roomtype==1){
+            nbval = scene.pica.level;
+        }else if(this.roomtype==2){
+            nbval = scene.pica.level;
+        }
+        while(nbval>0){
+            let choice = parseInt(Math.random()*4);
+            let position = new BABYLON.Vector3(this.ox+20+Math.random()*80, 15, this.oz+20+Math.random()*80)
+            if(choice==0){
+                let marowakmesh = this.createur.creerEnemie(marowakobj,position,'m');
+                this.enemies.push(marowakmesh);
+                nbval-=1;
+            }else if(nbval>=2 && choice==1){
+                let  papillon = this.createur.creerEnemie(scene.enemies.papillon,position,'p');
+                this.enemies.push(papillon);
+                nbval-=2;
+            }else if(choice == 2){
+                let explosifmesh = this.createur.creerEnemie(scene.enemies.explosif,position,'e');
+                this.enemies.push(explosifmesh);
+                nbval-=1;
+            }else if(nbval>=2 && choice == 3){
+                let eponamesh = this.createur.creerEnemie(scene.enemies.epona,position,'h');
+                this.enemies.push(eponamesh);
+                nbval-=2;
+            }
+        }
         
     }
 
     createDragonRoom(scene){
         for (let i = 0; i < 4; i++) {
-            let xval = Math.random()*4;
             let fires = [];
             for (let z = 0; z < 15; z++) {
                 let fire2 = scene.fire.clone("fire");

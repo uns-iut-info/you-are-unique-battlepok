@@ -46,7 +46,7 @@ export default class Chemin {
         let found;
         let lastmouve = [this.pos[0],this.pos[1]];
         while(decale[0]!=0||decale[1]!=0){
-            this.lavecondition = parseInt(Math.random()*20)==0;
+            this.lavecondition = parseInt(Math.random()*15)==0;
             found = true;
             if(decale[0]!=0){
                 let d = this.isNegatifd(decale[0]);
@@ -61,6 +61,7 @@ export default class Chemin {
                     let d = this.isNegatifd(decale[0]);
                     let opd = 1;
                     while(!this.cheminMove(this.pos,[this.pos[0]+d,this.pos[1], this.pos[2]+d, this.pos[3]],decale,0,lastmouve,d)){
+                        this.lavecondition = parseInt(Math.random()*15)==0;
                         this.pos = [this.pos[0],this.pos[1]+opd, this.pos[2], this.pos[3]+opd];
                         lastmouve = this.pos;
                         decale[1]-=1;
@@ -73,6 +74,7 @@ export default class Chemin {
                     let d = this.isNegatifd(decale[1]);
                     let opd = 1;
                     while(!this.cheminMove(this.pos,[this.pos[0],this.pos[1]+d, this.pos[2], this.pos[3]+d],decale,1,lastmouve,d)){
+                        this.lavecondition = parseInt(Math.random()*15)==0;
                         this.pos = [this.pos[0]+opd,this.pos[1], this.pos[2]+opd, this.pos[3]];
                         lastmouve = this.pos;
                         decale[0]-=1;

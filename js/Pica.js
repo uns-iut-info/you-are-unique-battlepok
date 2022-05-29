@@ -8,7 +8,7 @@ export default class Pica {
         this.picaMesh = picaMesh;
         this.armature = armature;
         this.allanymation = armature._ranges;
-        console.log(this.allanymation)
+        //console.log(this.allanymation)
         this.picaMesh.frontVector = new BABYLON.Vector3(0, 0, 1);
         //initialiser la vision with a cube in front of the player
         this.vuecube = new BABYLON.Mesh.CreateBox("picavue",2,scene);
@@ -91,7 +91,7 @@ export default class Pica {
 
 
         this.level = 1;
-        this.maxlevel = 15;
+        this.maxlevel = 8;
         this.dynamicTexture = new BABYLON.DynamicTexture("DynamicTexture", {width:30, height:30}, scene, false);
         var mat = new BABYLON.StandardMaterial("mat", scene);
         mat.diffuseTexture = this.dynamicTexture;
@@ -120,11 +120,11 @@ export default class Pica {
         if(speed)
             this.speed = speed;
         else
-            this.speed = 1;
+            this.speed = 0.75;
         if(speed)
             this.runspeed = speed*2;
         else
-            this.runspeed = 2;
+            this.runspeed = 1.5;
         // in case, attach the instance to the mesh itself, in case we need to retrieve
         // it after a scene.getMeshByName that would return the Mesh
         // SEE IN RENDER LOOP !
@@ -189,7 +189,7 @@ export default class Pica {
         this.cplight.intensity = 2;
         
         
-        console.log(rain.emitter);
+        //console.log(rain.emitter);
         rain.start();
         this.rain = rain;
     }
@@ -203,7 +203,16 @@ export default class Pica {
 
     incrlevel(){
         this.level+=1;
+        this.maxlife+=0.5;
+        this.modifiemaxbar(this.lifeblackbar,0.5);
+        this.maxenergie+=0.5;
+        this.modifiemaxbar(this.energieblackbar,0.5);
+        this.nextlevelexperience+=2;
+        this.modifiemaxbar(this.expblackbar,2);
         this.dynamicTexture.drawText(""+this.level, null, null, "bold " + 16 + "px Arial", "#000000", "#ffffff", true);
+        //full live
+        this.degat(-1*(this.maxlife-this.life));
+        
     }
 
     increxperience(val){
@@ -222,7 +231,7 @@ export default class Pica {
 
 
     degat(degat){
-        if(this.life>=0){
+        if(this.life>=0  && this.life - degat <= this.maxlife){
             this.life-=degat;
             this.modifiemaxbar(this.lifebar,-degat); 
         }
@@ -251,19 +260,23 @@ export default class Pica {
         }
         if(this.boolincrenergie){
             this.boolincrenergie = false;
+            this.degat(-0.3)
             if(this.energie<this.maxenergie){
                 this.energie += 1;
                 this.modifiemaxbar(this.energiebar,1);
+                
             }
             setTimeout(() => {
                 this.boolincrenergie=true;   
-            }, 1000 * 5)
+            }, 1000 *4)
         }
+        
+
 
         if(inputStates.switch){
             
             this.attacstate = !this.attacstate;
-            console.log("switch",this.attacstate)
+            //console.log("switch",this.attacstate)
             inputStates.switch = false;
         }
             
@@ -317,9 +330,9 @@ export default class Pica {
         }
         
         if(this.notbloque){
-            if(inputStates.space){
+            if(inputStates.space && this.picaMesh.position.y<10){
                 if(this.isrunning){
-                    this.jump=4;
+                    this.jump=3;
                     this.animation(scene,6)
                 }else{
                     this.jump=3;
@@ -335,40 +348,40 @@ export default class Pica {
             }else if(inputStates.fight){
                 if(this.energie>0){
                     if(this.attacstate){
-                        this.aplyshortataccolision(scene,1,10)
+                        this.aplyshortataccolision(scene,3,20)
                         this.energie-=1;
                         this.modifiemaxbar(this.energiebar,-1);
                         this.animation(scene,7)
                     }else{
-                        this.aplyshortataccolision(scene,1,10);
+                        this.aplyshortataccolision(scene,1,20);
                         this.animation(scene,8);
-                        this.energie-=1;
-                        this.modifiemaxbar(this.energiebar,-1);
                     }
                     
                 }
-            }else if(inputStates.fight2){
+            }else if(inputStates.fire){
                 if(this.energie>0){
-                    
-                    this.aplyshortataccolision(scene,1,10);
-                    this.animation(scene,8);
-                    this.energie-=1;
-                    this.modifiemaxbar(this.energiebar,-1); 
-                }
-            }else if(inputStates.fire2){
-                if(this.energie>0){
-                    
-                    this.visibilityeclairemesh(true);
-                    scene.beginAnimation(this.picaatarmature, 0, 32, false);
-                    this.notbloque = false;
-                    setTimeout(() => { 
-                        this.visibilityeclairemesh(false);
-                        this.notbloque = true;  
-                    }, 1000 * 1.5)
-                    this.aplyshortataccolision(scene,1,100);
-                    //this.animation(scene,8);
-                    this.energie-=1;
-                    this.modifiemaxbar(this.energiebar,-1); 
+                    if(this.attacstate){
+                        this.animation(scene,7)
+                        this.notbloque = false;
+                        setTimeout(() => {
+                            this.throwelectricball(scene);
+                            this.notbloque = true;
+                        }, 1000 * 1)
+                        this.energie-=1;
+                        this.modifiemaxbar(this.energiebar,-1);
+                    }else{
+                        this.visibilityeclairemesh(true);
+                        scene.beginAnimation(this.picaatarmature, 0, 32, false);
+                        this.notbloque = false;
+                        setTimeout(() => { 
+                            this.visibilityeclairemesh(false);
+                            this.notbloque = true;  
+                        }, 1000 * 1)
+                        this.aplyshortataccolision(scene,2,200);
+                        //this.animation(scene,8);
+                        this.energie-=2;
+                        this.modifiemaxbar(this.energiebar,-2);
+                    }   
                 }
             }else if(inputStates.up || inputStates.down || inputStates.left || inputStates.right){
                 if(this.isrunning){
@@ -386,8 +399,7 @@ export default class Pica {
         }
         
         inputStates.fight = false;
-        inputStates.fight2 = false;
-        inputStates.fire2 = false;
+        inputStates.fire = false;
         inputStates.space = false;
         mymouse.x = 0;
         mymouse.y = 0;
@@ -401,7 +413,7 @@ export default class Pica {
             this.animationstate = number;
             let myanimation = Object.values(this.allanymation)[number];
             //wait end animation
-            if(number==2 || number == 3 || number == 6 || number == 7 || number == 8 || number == 9){
+            if(number==2 || number == 3 || number == 7 || number == 8 || number == 9){
                 this.notbloque = false;
                 setTimeout(async () => {
                     this.anim = scene.beginAnimation(this.armature, myanimation.from+2, myanimation.to, false);
@@ -431,7 +443,7 @@ export default class Pica {
         });
 
         if (hit.pickedMesh){
-            console.log(hit.pickedMesh.name)
+            //console.log(hit.pickedMesh.name)
             if(hit.pickedMesh.name.startsWith("enemy")){
                 let enemibounder = hit.pickedMesh;
                 let enemi = enemibounder.enemiMesh.Enemi;
@@ -440,6 +452,58 @@ export default class Pica {
             }  
 	    }
     }
+
+    throwelectricball(scene){
+        let sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter: 4, segments: 32});
+        let sphereMaterial = new BABYLON.StandardMaterial("sphereMaterial", scene);
+        sphere.material = sphereMaterial;
+        sphereMaterial.emissiveColor = new BABYLON.Color3(0.05, 0.05, 0.05);
+        sphereMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
+        sphereMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
+        sphereMaterial.emissiveTexture = new BABYLON.Texture("img/bouleelec.jpg", scene);
+
+        sphere.position = new BABYLON.Vector3(this.picaMesh.position.x,this.picaMesh.position.y+5,this.picaMesh.position.z);
+        sphere.position.addInPlace(this.picaMesh.frontVector.multiplyByFloats(7, 7, 7));
+        
+        sphere.physicsImpostor = new BABYLON.PhysicsImpostor(
+            sphere,
+            BABYLON.PhysicsImpostor.SphereImpostor,
+            { mass: 1 },
+            scene
+        );
+
+        let powerOfFire = 100;
+        let aimForceVector = new BABYLON.Vector3(
+            this.picaMesh.frontVector.x * powerOfFire,
+            0,
+            this.picaMesh.frontVector.z * powerOfFire
+        );
+        sphere.physicsImpostor.applyImpulse(aimForceVector, sphere.getAbsolutePosition());
+        sphere.actionManager = new BABYLON.ActionManager(scene);
+
+        scene.enemies.forEach(enemi => {
+            sphere.actionManager.registerAction(
+                new BABYLON.ExecuteCodeAction(
+                  {
+                    trigger: BABYLON.ActionManager.OnIntersectionEnterTrigger,
+                    parameter: enemi.Enemi.bounder,
+                  }, 
+                  () => {
+                    if (enemi.Enemi.bounder._isDisposed) return;
+                    enemi.Enemi.degat(2);
+                  }
+                )
+              );
+        });
+
+        setTimeout(() => { 
+            sphere.dispose();
+        },1000*2)
+        
+    }
+
+
+
     checkColisionAction(scene){
         let origin = new BABYLON.Vector3(this.picaMesh.position.x,this.picaMesh.position.y+7,this.picaMesh.position.z);
         let direction = new BABYLON.Vector3(0, -90,0);
@@ -452,15 +516,14 @@ export default class Pica {
             }else{
                 return (mesh.name.startsWith("fire"));
             }
-           
         });
 
         if (hit.pickedMesh){
-            console.log(hit.pickedMesh.name)
+            //console.log(hit.pickedMesh.name)
             if(hit.pickedMesh.name.startsWith("LaveCopy")){
-                this.degat(0.1)
+                this.degat(0.03)
             }else if(hit.pickedMesh.name.startsWith("fire")){
-                this.degat(0.2)
+                this.degat(0.03)
             }
 	    }
     }

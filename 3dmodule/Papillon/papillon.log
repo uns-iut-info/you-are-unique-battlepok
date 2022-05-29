@@ -18,6 +18,8 @@ Exporter version: 2.93.5, Blender version: 2.93.3
 		processing begun of bone:  Bone.003, index:  3
 		processing begun of bone:  Bone.004, index:  4
 		processing begun of bone:  Bone.005, index:  5
+		processing action 1fly:  in[1 - 48], out[0 - 48]
+		processing action 2end:  in[1 - 48], out[60 - 108]
 	processing begun of camera (UniversalCamera):  Camera
 	processing begun of mesh:  papillon
 		processing begun of material:  matpapillon
@@ -41,4 +43,4 @@ Exporter version: 2.93.5, Blender version: 2.93.3
 	writing mesh:  papillon
 ========= Writing of JSON file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 1.8796 secs
+elapsed time:  0 min, 2.0984 secs
